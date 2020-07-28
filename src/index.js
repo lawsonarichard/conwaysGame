@@ -1,10 +1,5 @@
 import React from 'react';
-import {View,Text} from 'react-native';
+import {HelloWorld} from '_atoms';
 
-const App = () => (
-  <View>
-    <Text>Hello World</Text>
-  </View>
-);
-
+const App = () => <HelloWorld name="Conway's Game of Life" />;
 export default App;

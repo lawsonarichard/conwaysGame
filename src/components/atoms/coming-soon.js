@@ -1,13 +1,13 @@
 import React from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 
-const HelloWorld = ({name}) => (
+const ComingSoon = () => (
   <View style={styles.container}>
-    <Text style={styles.Text}>Hello World {name}!</Text>
+    <Text style={styles.Text}>Coming Soon!</Text>
   </View>
 );
 
-export default HelloWorld;
+export default ComingSoon;
 
 const styles = StyleSheet.create({
   Text: {

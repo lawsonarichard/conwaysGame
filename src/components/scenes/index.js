@@ -1,0 +1,1 @@
+export {default as PlayerView} from './playerView/index';

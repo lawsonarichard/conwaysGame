@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import produce from 'immer';
 import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const numRows = 25;
 const numCols = 25;
@@ -38,7 +39,7 @@ const Grid = () => {
     return createEmptyGrid();
   });
   const [running, setRunning] = useState(false);
-  
+
   const runningRef = useRef();
   runningRef.current = running;
   const runSimulation = useCallback(() => {
@@ -71,24 +72,31 @@ const Grid = () => {
 
   return (
     <>
-      <Button
-        title={running ? 'stop' : 'start'}
+      <TouchableOpacity
         onPress={() => {
           setRunning(!running);
           if (!running) {
             runningRef.current = true;
             runSimulation();
           }
-        }}
-      />
-      <Button
-        title="Clear"
+        }}>
+        {running ? (
+          <View>
+            <Icon name="stop-circle" size={30} /> 
+          </View>
+        ) : (
+          <View>
+            <Icon name="play-circle" size={30} />
+          </View>
+        )}
+      </TouchableOpacity>
+      <TouchableOpacity
         onPress={() => {
           setGrid(createEmptyGrid());
-        }}
-      />
-      <Button
-        title="Generate Random"
+        }}>
+        <Text>Clear Board</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
         onPress={() => {
           const rows = [];
           for (let i = 0; i < numRows; i++) {
@@ -97,16 +105,16 @@ const Grid = () => {
             );
           }
           setGrid(rows);
-        }}
-      />
-      <ReactNativeZoomableView 
-      style={styles.container}
-      maxZoom={1.5}
-      minZoom={0.5}
-      zoomStep={0.5}
-      initialZoom={1}
-      bindToBorders={true}
-      >
+        }}>
+        <Text>Generate Random</Text>
+      </TouchableOpacity>
+      <ReactNativeZoomableView
+        style={styles.container}
+        maxZoom={1.5}
+        minZoom={0.5}
+        zoomStep={0.5}
+        initialZoom={1}
+        bindToBorders={true}>
         {grid.map((rows, i) =>
           rows.map((col, k) => (
             <TouchableOpacity

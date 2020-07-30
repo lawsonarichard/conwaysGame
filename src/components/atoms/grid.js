@@ -80,8 +80,15 @@ const Grid = () => {
             runSimulation();
           }
         }}>
-        <Icon name='rocket' size={30} />
-        <Text>{running ? 'Stop' : 'Start'}</Text>
+        {running ? (
+          <View>
+            <Icon name="stop-circle" size={30} /> 
+          </View>
+        ) : (
+          <View>
+            <Icon name="play-circle" size={30} />
+          </View>
+        )}
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {

@@ -9,6 +9,8 @@ import {
   Button,
 } from 'react-native';
 import produce from 'immer';
+import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
+
 const numRows = 25;
 const numCols = 25;
 
@@ -36,7 +38,7 @@ const Grid = () => {
     return createEmptyGrid();
   });
   const [running, setRunning] = useState(false);
-
+  
   const runningRef = useRef();
   runningRef.current = running;
   const runSimulation = useCallback(() => {
@@ -97,7 +99,14 @@ const Grid = () => {
           setGrid(rows);
         }}
       />
-      <ScrollView contentContainerStyle={styles.container}>
+      <ReactNativeZoomableView 
+      style={styles.container}
+      maxZoom={1.5}
+      minZoom={0.5}
+      zoomStep={0.5}
+      initialZoom={1}
+      bindToBorders={true}
+      >
         {grid.map((rows, i) =>
           rows.map((col, k) => (
             <TouchableOpacity
@@ -119,7 +128,7 @@ const Grid = () => {
             />
           )),
         )}
-      </ScrollView>
+      </ReactNativeZoomableView>
     </>
   );
 };

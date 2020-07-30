@@ -11,6 +11,7 @@
     "windows": "react-native run-windows"
   },
   "dependencies": {
+    "@dudigital/react-native-zoomable-view": "^1.0.15",
     "immer": "^7.0.7",
     "react": "16.11.0",
     "react-native": "^0.62.0-0",

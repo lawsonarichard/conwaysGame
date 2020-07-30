@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import produce from 'immer';
 import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const numRows = 25;
 const numCols = 25;
@@ -79,6 +80,7 @@ const Grid = () => {
             runSimulation();
           }
         }}>
+        <Icon name='rocket' size={30} />
         <Text>{running ? 'Stop' : 'Start'}</Text>
       </TouchableOpacity>
       <TouchableOpacity

@@ -104,6 +104,7 @@
     <ClInclude Include="App.h">
       <DependentUpon>App.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -146,6 +147,12 @@
     <Text Include="readme.txt">
       <DeploymentContent>false</DeploymentContent>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\..\node_modules\react-native-vector-icons\Fonts\FontAwesome.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="conwaysGame.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <PropertyGroup Label="ReactNativeWindowsNodeProps">

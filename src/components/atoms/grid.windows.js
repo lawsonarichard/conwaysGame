@@ -1,4 +1,5 @@
-import React, {useState, useCallback, useRef, Platform} from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useState, useCallback, useRef} from 'react';
 import {
   Text,
   View,
@@ -9,7 +10,6 @@ import {
   Button,
 } from 'react-native';
 import produce from 'immer';
-import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Header} from '_atoms';
 import {InfoModal} from '_atoms';
@@ -107,13 +107,7 @@ const Grid = () => {
 
   return (
     <View style={{flex: 1, backgroundColor: '#121212'}}>
-      <ReactNativeZoomableView
-        style={styles.container}
-        maxZoom={1.5}
-        minZoom={0.5}
-        zoomStep={0.5}
-        initialZoom={0.8}
-        bindToBorders={true}>
+      <View style={styles.container}>
         {grid.map((rows, i) =>
           rows.map((col, k) => (
             <TouchableOpacity
@@ -135,8 +129,8 @@ const Grid = () => {
             />
           )),
         )}
-      </ReactNativeZoomableView>
-      <View style={{flex: 1, padding: 20, position: 'absolute', bottom: 80}}>
+      </View>
+      <View style={{flex: 1, padding: 20, position: 'absolute', bottom: 120}}>
         <Header title="Conway's Game of Life" />
         <Text style={{color: '#FFFAFB', fontSize: 18}}>
           Generation : {generations}
@@ -153,6 +147,7 @@ const Grid = () => {
           backgroundColor: '#2A2A2A',
           width: '100%',
           padding: 20,
+          alignItems: 'center',
         }}>
         <TouchableOpacity
           onPress={() => {
@@ -163,12 +158,12 @@ const Grid = () => {
             }
           }}>
           {running ? (
-            <View stlye={{width: 38, height: 38, backgroundColor: '#2A2A2A'}}>
-              <Icon name="stop-circle" size={38} color="#FFFAFB" />
+            <View >
+              <Text style={styles.Button}>Stop</Text>
             </View>
           ) : (
             <View>
-              <Icon name="play-circle" size={38} color="#FFFAFB" />
+              <Text style={styles.Button}>Start</Text>
             </View>
           )}
         </TouchableOpacity>
@@ -177,7 +172,7 @@ const Grid = () => {
             setGrid(createEmptyGrid());
             setGenerations(0);
           }}>
-          <Icon name="eraser" size={38} color="#FFFAFB" />
+          <Text style={styles.Button}>Clear</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
@@ -195,7 +190,7 @@ const Grid = () => {
             }
             setGrid(rows);
           }}>
-          <Icon name="random" size={38} color="#FFFAFB" />
+          <Text style={styles.Button}>Random</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
@@ -214,10 +209,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-
     flexWrap: 'wrap',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 550,
+
+  },
+  Button: {
+    fontSize: 24,
   },
 });

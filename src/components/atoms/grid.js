@@ -214,7 +214,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     justifyContent: 'space-between',

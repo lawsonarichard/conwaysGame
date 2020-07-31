@@ -4,14 +4,14 @@ import {Grid} from '_atoms';
 import { Header } from '_atoms';
 
 const PlayerView = () => {
-    const [generations, setGenerations] = useState('0')
+   
     return (
         <>
         <View style={styles.container}>
         <Header title={"Conway's Game of Life"}/>
         </View>
         <Grid/>
-        <Text>Generation : {generations}</Text>
+      
         </>
     )
 }

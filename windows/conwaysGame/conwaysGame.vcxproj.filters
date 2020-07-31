@@ -50,6 +50,9 @@
     <Filter Include="Assets">
       <UniqueIdentifier>{e48dc53e-40b1-40cb-970a-f89935452892}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\Fonts">
+      <UniqueIdentifier>{5abf80d3-aca8-4b4c-8b26-1bc1c7767d9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="PropertySheet.props" />
@@ -59,11 +62,11 @@
     <Text Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="..\..\node_modules\react-native-vector-icons\Fonts\FontAwesome.ttf">
-      <Filter>Assets</Filter>
-    </Font>
+    <ResourceCompile Include="conwaysGame.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="conwaysGame.rc" />
+    <Font Include="..\..\node_modules\react-native-vector-icons\Fonts\FontAwesome.ttf">
+      <Filter>Assets\Fonts</Filter>
+    </Font>
   </ItemGroup>
 </Project>

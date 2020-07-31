@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useRef} from 'react';
+import React, {useState, useCallback, useRef, Platform} from 'react';
 import {
   Text,
   View,
@@ -38,16 +38,29 @@ const Grid = () => {
   const [grid, setGrid] = useState(() => {
     return createEmptyGrid();
   });
+  const [generations, setGenerations] = useState(0);
+  const [color, setColor] = useState('#00BCD4');
   const [running, setRunning] = useState(false);
-
   const runningRef = useRef();
   runningRef.current = running;
+  const colorChanger = () => {
+    var ColorCode =
+      'rgb(' +
+      Math.floor(Math.random() * 256) +
+      ',' +
+      Math.floor(Math.random() * 256) +
+      ',' +
+      Math.floor(Math.random() * 256) +
+      ')';
+    setColor(ColorCode);
+  };
   const runSimulation = useCallback(() => {
     if (!runningRef.current) {
       return;
     }
     setGrid(g => {
       return produce(g, gridCopy => {
+        setGenerations(generations => (generations += 1));
         for (let i = 0; i < numRows; i++) {
           for (let k = 0; k < numCols; k++) {
             let neighbors = 0;
@@ -82,7 +95,7 @@ const Grid = () => {
         }}>
         {running ? (
           <View>
-            <Icon name="stop-circle" size={30} /> 
+            <Icon name="stop-circle" size={30} />
           </View>
         ) : (
           <View>
@@ -94,7 +107,7 @@ const Grid = () => {
         onPress={() => {
           setGrid(createEmptyGrid());
         }}>
-        <Text>Clear Board</Text>
+        <Icon name="eraser" size={30} />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
@@ -106,7 +119,14 @@ const Grid = () => {
           }
           setGrid(rows);
         }}>
-        <Text>Generate Random</Text>
+        <Icon name="refresh" size={30} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          colorChanger();
+        }}>
+        <Text>Color Change</Text>
+        <View style={{width: 20, height: 20, backgroundColor: `${color}`}} />
       </TouchableOpacity>
       <ReactNativeZoomableView
         style={styles.container}
@@ -124,7 +144,7 @@ const Grid = () => {
                 height: 20,
                 margin: 1,
                 aspectRatio: 1,
-                backgroundColor: grid[i][k] ? 'powderblue' : 'black',
+                backgroundColor: grid[i][k] ? `${color}` : 'black',
               }}
               onPress={() => {
                 const newGrid = produce(grid, gridCopy => {
@@ -137,6 +157,7 @@ const Grid = () => {
           )),
         )}
       </ReactNativeZoomableView>
+      <Text>Generation : {generations}</Text>
     </>
   );
 };

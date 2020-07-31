@@ -12,6 +12,7 @@ import produce from 'immer';
 import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Header} from '_atoms';
+import {InfoModal} from '_atoms';
 
 const numRows = 25;
 const numCols = 25;
@@ -57,12 +58,10 @@ const Grid = () => {
       setMultiplier('2x');
       setSpeed(0.1);
       console.log(speed);
-
     } else if (speed === 1 || speed === 0.1) {
       setMultiplier('1x');
       setSpeed(500);
       console.log(speed);
-
     }
   };
   const colorChanger = () => {
@@ -82,7 +81,6 @@ const Grid = () => {
     }
     setGrid(g => {
       return produce(g, gridCopy => {
-       
         for (let i = 0; i < numRows; i++) {
           for (let k = 0; k < numCols; k++) {
             let neighbors = 0;
@@ -102,10 +100,10 @@ const Grid = () => {
         }
       });
     });
-    
+
     setTimeout(runSimulation, speed);
     setGenerations(generations => (generations += 1));
-  }, []);
+  }, [speed]);
 
   return (
     <View style={{flex: 1, backgroundColor: '#121212'}}>
@@ -143,6 +141,7 @@ const Grid = () => {
         <Text style={{color: '#FFFAFB', fontSize: 18}}>
           Generation : {generations}
         </Text>
+        <InfoModal />
       </View>
       <View
         style={{
@@ -184,9 +183,7 @@ const Grid = () => {
           onPress={() => {
             speedChanger();
           }}>
-          <Text style={{color: '#FFFAFB', fontSize: 24}}>
-            {multiplier}
-          </Text>
+          <Text style={{color: '#FFFAFB', fontSize: 24}}>{multiplier}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {

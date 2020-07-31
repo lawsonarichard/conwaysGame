@@ -68,5 +68,7 @@
     <Font Include="..\..\node_modules\react-native-vector-icons\Fonts\FontAwesome.ttf">
       <Filter>Assets\Fonts</Filter>
     </Font>
+    <Font Include="Assets\FontAwesome.ttf" />
+    <Font Include="Assets\Fonts\FontAwesome.ttf" />
   </ItemGroup>
 </Project>

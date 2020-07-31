@@ -150,6 +150,8 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\node_modules\react-native-vector-icons\Fonts\FontAwesome.ttf" />
+    <Font Include="Assets\FontAwesome.ttf" />
+    <Font Include="Assets\Fonts\FontAwesome.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="conwaysGame.rc" />

@@ -15,6 +15,8 @@ export default Header;
 
 const styles = StyleSheet.create({
     header: {
-        fontSize: 36,
+        fontSize: 30,
+        color: '#FFFAFB'
+        
     }
 })

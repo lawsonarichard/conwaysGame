@@ -14,7 +14,7 @@
     "@dudigital/react-native-zoomable-view": "^1.0.15",
     "immer": "^8.0.1",
     "react": "16.11.0",
-    "react-native": "^0.62.0-0",
+    "react-native": "^0.62.3",
     "react-native-vector-icons": "^7.0.0",
     "react-native-windows": "^0.62.0-0"
   },
